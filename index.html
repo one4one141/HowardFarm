@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Howard Farm Holiday Cottages | Self-Catering in Bude, Cornwall</title>
+  <meta name="description" content="Peaceful 4-star self-catering holiday cottages near Bude, Cornwall. Mature gardens, BBQ, free parking & WiFi. Book your countryside escape." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-900: #1a3c2e;
+      --green-800: #234d3a;
+      --green-700: #2d5f48;
+      --green-600: #3a7a5c;
+      --cream: #f8f5f0;
+      --sand: #e8e0d5;
+      --gold: #c9a86c;
+      --text: #2c2c2c;
+      --muted: #5a5a5a;
+      --white: #ffffff;
+      --shadow: 0 10px 40px rgba(26, 60, 46, 0.12);
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(248, 245, 240, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26, 60, 46, 0.08);
+      transition: box-shadow 0.3s;
+    }
+    header.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--green-900);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--green-800);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-600); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--green-800);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(35, 77, 58, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--green-900);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(35, 77, 58, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--green-800);
+      border: 2px solid var(--green-700);
+    }
+    .btn-outline:hover {
+      background: var(--green-800);
+      color: var(--white);
+    }
+    .btn-large {
+      padding: 1.05rem 2rem;
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 5rem;
+      background:
+        linear-gradient(to top, rgba(26, 60, 46, 0.88) 0%, rgba(26, 60, 46, 0.45) 45%, rgba(26, 60, 46, 0.25) 100%),
+        url('images/107098570.jpg') center/cover no-repeat;
+      color: var(--white);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 100px;
+      background: linear-gradient(to top, var(--cream), transparent);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding-top: 8rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.6rem);
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      margin-bottom: 1.75rem;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    section { padding: 4.5rem 0; }
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+      color: var(--green-900);
+      margin-bottom: 0.75rem;
+    }
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-size: 2.1rem;
+      color: var(--green-900);
+      margin-bottom: 1.1rem;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      font-size: 1.05rem;
+    }
+    .about-text .hosts {
+      margin-top: 1.5rem;
+      padding: 1.15rem 1.4rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .about-text .hosts strong { color: var(--green-800); }
+
+    .about-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    .about-images img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    .about-images img:first-child {
+      grid-column: 1 / -1;
+      height: 240px;
+    }
+
+    .gallery {
+      background: var(--white);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    }
+    .gallery-grid img:nth-child(1),
+    .gallery-grid img:nth-child(6) {
+      grid-column: span 2;
+      height: 260px;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.35rem;
+    }
+    .amenity-card {
+      background: var(--white);
+      padding: 1.5rem 1.35rem;
+      border-radius: var(--radius);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid rgba(26,60,46,0.06);
+    }
+    .amenity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-800);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    .amenity-card h3 {
+      font-size: 1.1rem;
+      color: var(--green-900);
+      margin-bottom: 0.35rem;
+    }
+    .amenity-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.75rem;
+      align-items: start;
+    }
+    .location-list {
+      list-style: none;
+      margin-top: 1.25rem;
+    }
+    .location-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--sand);
+    }
+    .location-list li:last-child { border-bottom: none; }
+    .location-list .dist {
+      font-weight: 600;
+      color: var(--green-700);
+      min-width: 4.2rem;
+    }
+    .map-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .map-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .map-card .map-info {
+      padding: 1.25rem 1.4rem;
+    }
+    .map-card .map-info h3 {
+      font-size: 1.1rem;
+      color: var(--green-900);
+      margin-bottom: 0.3rem;
+    }
+    .map-card .map-info p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* Booking embed section */
+    .booking-section {
+      background: var(--white);
+      padding: 4.5rem 0 5rem;
+    }
+    .booking-card {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(26, 60, 46, 0.08);
+    }
+    .booking-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.4rem;
+      background: var(--green-900);
+      color: white;
+    }
+    .booking-toolbar strong { font-size: 1rem; }
+    .booking-toolbar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--gold);
+      color: var(--green-900);
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .booking-toolbar a:hover { background: #d4b57a; }
+
+    .iframe-wrap {
+      position: relative;
+      width: 100%;
+      height: 780px;
+      background: #eaeaea;
+    }
+    .iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .booking-fallback {
+      display: none;
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: var(--cream);
+    }
+    .booking-fallback h3 {
+      color: var(--green-900);
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+    .booking-fallback p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      background: var(--green-900);
+      color: rgba(255,255,255,0.85);
+      padding: 3.25rem 0 1.75rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.25rem;
+      margin-bottom: 2.25rem;
+    }
+    .footer-brand .logo { color: white; margin-bottom: 0.9rem; }
+    .footer-brand p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.9rem;
+      color: var(--gold);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.45rem; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.35rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-height: 90vh;
+      max-width: 95vw;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-900);
+      margin: 5px 0;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .location-grid,
+      .footer-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-grid img:nth-child(1),
+      .gallery-grid img:nth-child(6) {
+        grid-column: span 1;
+        height: 180px;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 1.35rem;
+        gap: 1.1rem;
+        border-bottom: 1px solid var(--sand);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .hero { min-height: 80vh; }
+      .iframe-wrap { height: 680px; }
+    }
+
+    @media (max-width: 600px) {
+      .about-grid,
+      .location-grid,
+      .footer-grid,
+      .about-images,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-images img:first-child { height: 200px; }
+      .gallery-grid img { height: 200px; }
+      .hero-actions { flex-direction: column; }
+      .btn-large { width: 100%; }
+      .booking-toolbar { flex-direction: column; text-align: center; }
+      .iframe-wrap { height: 620px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container nav">
+      <a href="#" class="logo">Howard Farm Cottages</a>
+      <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Photos</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#book" class="btn btn-primary">Book Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge">★ 9.1 · Wonderful · 70+ reviews</div>
+      <h1>Peaceful countryside cottages near Bude</h1>
+      <p>4-star self-catering holiday homes set in mature gardens with panoramic views over rolling Cornish countryside. Your perfect base for beaches, walks and exploring North Cornwall.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary btn-large">Check Availability &amp; Book</a>
+        <a href="#gallery" class="btn btn-outline btn-large" style="border-color: rgba(255,255,255,0.55); color: white;">View Photos</a>
+      </div>
+      <div class="hero-meta">
+        <span>📍 Howard Lane, Bude EX23 9TF</span>
+        <span>🚗 Free private parking</span>
+        <span>📶 Free WiFi</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2>Welcome to Howard Farm</h2>
+        <p>Howard Farm Holiday Cottages is a collection of comfortable 4-star self-catering bungalows nestled in peaceful surroundings just outside Bude. Guests particularly praise the mature garden, the hosts and the convenient location.</p>
+        <p>Each cottage has a fully equipped kitchen, private bathroom, lounge with flat-screen TV, and outdoor seating. Whether you’re here for the beaches, coastal walks, family time or simply to unwind, you’ll find a warm welcome and a true home from home.</p>
+        <div class="hosts">
+          <strong>Hosted by Marilyn &amp; John</strong><br />
+          <span style="color: var(--muted); font-size: 0.95rem;">“Ideally placed in beautiful peaceful surroundings with spectacular views over rolling countryside.” · Host score 9.7</span>
+        </div>
+      </div>
+      <div class="about-images">
+        <img src="images/107125260.jpg" alt="Exterior of Howard Farm Cottages" />
+        <img src="images/152346364.jpg" alt="Garden and outdoor seating" />
+        <img src="images/865448604.jpg" alt="Howard Farm Cottages entrance sign" />
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-header">
+        <h2>Inside the cottages</h2>
+        <p>Bright, comfortable spaces with everything you need for a relaxed self-catering stay.</p>
+      </div>
+      <div class="gallery-grid">
+        <img src="images/444636651.jpg" alt="Living room with sofas and TV" onclick="openLightbox(this)" />
+        <img src="images/444636880.jpg" alt="Living room with leather sofas and garden doors" onclick="openLightbox(this)" />
+        <img src="images/444636745.jpg" alt="Open plan living and dining area" onclick="openLightbox(this)" />
+        <img src="images/444636898.jpg" alt="Fully equipped kitchen" onclick="openLightbox(this)" />
+        <img src="images/638293010.jpg" alt="Kitchen with dining table" onclick="openLightbox(this)" />
+        <img src="images/444633960.jpg" alt="Twin bedroom with bird bedding" onclick="openLightbox(this)" />
+        <img src="images/444636895.jpg" alt="Bedroom with iron bed frames" onclick="openLightbox(this)" />
+        <img src="images/638292320.jpg" alt="Double bedroom with hare artwork" onclick="openLightbox(this)" />
+        <img src="images/444636924.jpg" alt="Double bedroom with garden view" onclick="openLightbox(this)" />
+        <img src="images/444636934.jpg" alt="Bedroom with single bed option" onclick="openLightbox(this)" />
+        <img src="images/444636823.jpg" alt="Modern bathroom with shower" onclick="openLightbox(this)" />
+        <img src="images/812055800.jpg" alt="Bathroom with walk-in shower" onclick="openLightbox(this)" />
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything you need</h2>
+        <p>Comfortable, well-equipped cottages designed for a proper break — cook, relax and enjoy the outdoors.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <div class="amenity-icon">🍳</div>
+          <h3>Fully equipped kitchen</h3>
+          <p>Oven, hob, microwave, fridge, kettle, toaster, washing machine and all the essentials for self-catering.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🌳</div>
+          <h3>Garden &amp; terrace</h3>
+          <p>Mature gardens, outdoor seating, patio and terrace with space to sit and enjoy the countryside views.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🔥</div>
+          <h3>Barbecue facilities</h3>
+          <p>Outdoor dining and BBQ available so you can cook and eat under the open sky.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🅿️</div>
+          <h3>Free private parking</h3>
+          <p>On-site parking right by the cottages — no hunting for spaces or extra fees.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">📶</div>
+          <h3>Free WiFi</h3>
+          <p>Stay connected when you want to, or switch off completely — the choice is yours.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">📺</div>
+          <h3>Lounge &amp; TV</h3>
+          <p>Comfortable seating areas with flat-screen TVs in every cottage.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🚿</div>
+          <h3>Private bathrooms</h3>
+          <p>Each unit has its own bathroom with shower. Selected rooms offer a bath or walk-in shower.</p>
+        </div>
+        <div class="amenity-card">
+          <div class="amenity-icon">🐕</div>
+          <h3>Pet-friendly options</h3>
+          <p>Well-behaved dogs are welcome at selected cottages (please check when booking).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore North Cornwall</h2>
+        <p>A quiet rural setting with easy access to beaches, coastal paths and classic Cornish attractions.</p>
+      </div>
+      <div class="location-grid">
+        <div>
+          <p style="color: var(--muted); font-size: 1.05rem; margin-bottom: 0.5rem;">Howard Farm sits on Howard Lane, a short drive from the centre of Bude and the sandy beaches that make this stretch of coast so popular. You’re also well placed for day trips to Tintagel, Launceston and the wider North Cornwall coast.</p>
+          <ul class="location-list">
+            <li>
+              <span class="dist">~2 km</span>
+              <span><strong>Bude centre</strong> — shops, restaurants, Bude Sea Pool &amp; canal</span>
+            </li>
+            <li>
+              <span class="dist">~2 km</span>
+              <span><strong>Sandymouth Beach</strong> — beautiful National Trust beach and walks</span>
+            </li>
+            <li>
+              <span class="dist">~3.5 km</span>
+              <span><strong>Bude Castle</strong> &amp; heritage centre</span>
+            </li>
+            <li>
+              <span class="dist">~28 km</span>
+              <span><strong>Launceston Castle</strong></span>
+            </li>
+            <li>
+              <span class="dist">~31 km</span>
+              <span><strong>Tintagel Castle</strong> — legendary King Arthur site</span>
+            </li>
+            <li>
+              <span class="dist">~62 km</span>
+              <span><strong>Newquay Cornwall Airport</strong></span>
+            </li>
+          </ul>
+        </div>
+        <div class="map-card">
+          <img src="images/107098570.jpg" alt="Aerial view of Howard Farm Cottages and surrounding countryside" />
+          <div class="map-info">
+            <h3>Howard Farm Holiday Cottages</h3>
+            <p>Howard Farm Cottage, Howard Lane<br />Bude, Cornwall EX23 9TF</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING EMBED SECTION -->
+  <section id="book" class="booking-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Check availability &amp; book</h2>
+        <p>Live calendar and secure booking powered by Booking.com. Select your dates below to reserve your cottage.</p>
+      </div>
+
+      <div class="booking-card">
+        <div class="booking-toolbar">
+          <strong>Howard Farm Holiday Cottages · Bude, Cornwall</strong>
+          <a href="https://www.booking.com/hotel/gb/howard-farm-holiday-cottages.en-gb.html" target="_blank" rel="noopener">
+            Open full page on Booking.com →
+          </a>
+        </div>
+
+        <div class="iframe-wrap" id="iframe-container">
+          <iframe
+            id="booking-iframe"
+            src="https://www.booking.com/hotel/gb/howard-farm-holiday-cottages.en-gb.html"
+            title="Book Howard Farm Holiday Cottages on Booking.com"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allow="payment"
+          ></iframe>
+        </div>
+
+        <div class="booking-fallback" id="booking-fallback">
+          <h3>Book securely on Booking.com</h3>
+          <p>Your browser is blocking the embedded calendar. Click the button below to check live availability and complete your booking.</p>
+          <a href="https://www.booking.com/hotel/gb/howard-farm-holiday-cottages.en-gb.html" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+            Check availability &amp; book →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color:white;">Howard Farm Cottages</a>
+          <p>Self-catering holiday cottages in the peaceful countryside near Bude, North Cornwall.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About the cottages</a></li>
+            <li><a href="#gallery">Photo gallery</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#location">Location &amp; attractions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Book</h4>
+          <ul>
+            <li><a href="#book">Check availability</a></li>
+            <li><a href="https://www.booking.com/hotel/gb/howard-farm-holiday-cottages.en-gb.html" target="_blank" rel="noopener">Booking.com</a></li>
+            <li>Howard Lane, Bude · EX23 9TF</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Howard Farm Holiday Cottages</span>
+        <span>Hosted by Marilyn &amp; John</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Enlarged photo" />
+  </div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
+    });
+
+    function openLightbox(img) {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Booking iframe fallback detection
+    setTimeout(() => {
+      const iframe = document.getElementById('booking-iframe');
+      const fallback = document.getElementById('booking-fallback');
+      const container = document.getElementById('iframe-container');
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || !doc.body || doc.body.innerHTML.trim() === '') {
+          container.style.display = 'none';
+          fallback.style.display = 'block';
+        }
+      } catch (e) {
+        // Cross-origin is expected — leave iframe visible, toolbar button still works
+      }
+    }, 2500);
+  </script>
+</body>
+</html>
